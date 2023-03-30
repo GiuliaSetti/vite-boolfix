@@ -1,0 +1,23 @@
+@mixin dRow(){
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin gradient(){
+    background-image: linear-gradient(black, rgb(28, 28, 28));
+}
+
+@mixin titleStyle(){
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+
+    text-shadow: 1px 0px 2px rgba(255, 255, 255, 0.443);
+}
+
+@mixin border(){
+    border-radius: 30px;
+    padding: 10px 30px;
+    
+    border: none;
+}
+
