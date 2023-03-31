@@ -12,11 +12,18 @@ export const store = reactive({
         query:'&query=',
         // movie
         movieAPI: '/search/movie',
+        // series
+        tvSeriesAPI: '/search/tv',
     },
 
     // array movies
     moviesList: [],
 
+    // array serieTV
+    tvSeriesList: [],
+
+
+    
 
     // testo input
     inputText:"",

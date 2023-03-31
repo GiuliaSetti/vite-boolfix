@@ -4,7 +4,7 @@
 import { store } from '../store';
 
 // importo la singola copertina
-import MovieItem from '../components/MovieItem.vue'
+import MediaItem from '../components/MediaItem.vue'
 
 export default {
     name: 'AppMain',
@@ -15,7 +15,7 @@ export default {
     },
 
     components:{
-        MovieItem,
+        MediaItem,
     }
 }
 </script>
@@ -24,12 +24,23 @@ export default {
 <template>
 
     <main>
-        <h2>Movies</h2>
+
+        <h2 class="categories_title">Movies</h2>
         <div id="movie_container">
            
-            <MovieItem v-for="movie in store.moviesList" :movie="movie"></MovieItem>
+            <MediaItem v-for="movie in store.moviesList" :media="movie"></MediaItem>
 
         </div>
+
+        <h2 class="categories_title">Tv Series</h2>
+
+        <div id="series_container">
+           
+           <MediaItem v-for="tvserie in store.tvSeriesList" :media="tvserie"></MediaItem>
+
+       </div>
+
+
     </main>
 
 </template>
@@ -44,16 +55,17 @@ export default {
     main{
         background-color: $secondColor;
 
-        height: 100vh;
+        height: 100%;
 
         margin-top: 80px;
 
-        padding: 0 3rem;
+        padding: 1rem 3rem;
 
-        h2{
+        .categories_title{
                 color: rgba(255, 255, 255, 0.557);
                 padding: 10px;  
-            }
+                margin-top: 2rem;
+        }
 
         #movie_container{
 
@@ -66,6 +78,20 @@ export default {
             overflow-y: hidden;
 
         }
+
+        #series_container{
+
+            @include dRow();
+
+            padding: 20px;
+            gap: 20px;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+        }
+
+      
        
     }
 

@@ -33,12 +33,22 @@
 
     search() {
 
-          let APIcall = this.store.APIs.APIbase + this.store.APIs.movieAPI + this.store.APIs.APIkey + this.store.APIs.query + this.store.inputText;
+          // per film
+          let APIMovieCall = this.store.APIs.APIbase + this.store.APIs.movieAPI + this.store.APIs.APIkey + this.store.APIs.query + this.store.inputText;
 
-          axios.get(APIcall).then((response) =>{
+          axios.get(APIMovieCall).then((response) =>{
             console.log(response.data.results);
 
             this.store.moviesList = response.data.results;
+          });
+
+          // per serie tivvi
+          let APISeriesCall = this.store.APIs.APIbase + this.store.APIs.tvSeriesAPI + this.store.APIs.APIkey + this.store.APIs.query + this.store.inputText;
+
+          axios.get(APISeriesCall).then((response) =>{
+            console.log(response.data.results);
+
+            this.store.tvSeriesList = response.data.results;
           });
 
 
