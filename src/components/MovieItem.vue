@@ -11,6 +11,11 @@ export default {
         }
     },
 
+    props: {
+        movie: Object,
+    },
+
+
  
 }
 
@@ -23,12 +28,12 @@ export default {
         <img src="https://picsum.photos/300/200" alt="image">
 
         
-        <h4 class="movie_title">Titolo</h4>
+        <h4 class="movie_title">{{ movie.title }}</h4>
 
         <div class="movie_info">
-            <h5 class="movie_original_title">Titolo Originale:</h5>
-            <div class="movie_vote">Voto:</div>
-            <div class="movie_overview">Overview:</div>
+            <div class="movie_original_title"><b>Titolo Originale:</b>{{ movie.original_title }}</div>
+            <div class="movie_vote"><b>Voto:</b>{{ movie.vote_average }}</div>
+            <div class="movie_language"><b>Lingua Originale:</b>{{ movie.original_language }}</div>
         </div>
 
       
@@ -59,7 +64,11 @@ export default {
 
             padding: 10px;
 
-            display: none;
+            font-size: 12px;
+
+            // display: none;
+
+            
 
         }
 
@@ -72,14 +81,14 @@ export default {
         .movie_info{
             display: block;
 
-            color: white;
+             color: white;
         }
 
         img{
             filter: brightness(0.3);
             transform: scale(1.04);
         }
-    }
+     }
     
 
 </style>

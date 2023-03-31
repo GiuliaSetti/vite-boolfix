@@ -29,7 +29,24 @@
   },
 
 
+  methods:{
 
+    search() {
+
+          let APIcall = this.store.APIs.APIbase + this.store.APIs.movieAPI + this.store.APIs.APIkey + this.store.APIs.query + this.store.inputText;
+
+          axios.get(APIcall).then((response) =>{
+            console.log(response.data.results);
+
+            this.store.moviesList = response.data.results;
+          });
+
+
+    }
+
+
+  }
+ 
 }
 
 
@@ -37,7 +54,7 @@
 
 <template>
 
-  <AppHeader></AppHeader>
+  <AppHeader  @search="search()"></AppHeader>
   <AppMain></AppMain>
   
 </template>

@@ -25,8 +25,8 @@ export default {
         </div>
 
         <div id="header_right">
-            <input type="search"  placeholder="search in the catalog">
-            <button>SEARCH</button>
+            <input type="search" @keyup.enter="$emit('search')" placeholder="search in the catalog" v-model="store.inputText">
+            <button @click="$emit('search')">SEARCH</button>
         </div>
 
     </header>
@@ -71,6 +71,7 @@ header{
         input{
             @include border();
             background-color: $secondColor;
+            color: white;
         }
 
         button{

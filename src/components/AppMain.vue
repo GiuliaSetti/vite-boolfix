@@ -27,7 +27,7 @@ export default {
         <h2>Movies</h2>
         <div id="movie_container">
            
-            <MovieItem></MovieItem>
+            <MovieItem v-for="movie in store.moviesList" :movie="movie"></MovieItem>
 
         </div>
     </main>
@@ -62,7 +62,8 @@ export default {
             padding: 20px;
             gap: 20px;
 
-            overflow-x: scroll;
+            overflow-x: auto;
+            overflow-y: hidden;
 
         }
        
