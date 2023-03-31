@@ -25,7 +25,9 @@ export default {
 <template>
 
     <div class="movie_card">
-        <img class="movie_cover" src="https://picsum.photos/300/200" alt="image">
+        <img v-if="media.poster_path !== null" class="movie_cover" :src="store.imgSrc + media.poster_path" alt="image">
+
+        <div class="movie_cover_null" v-else>Copertina non disponibile</div>
 
         <!-- pongo le condizioni affinchè si veda il nome o il titolo dato che le serie si identificano con nome -->
         <h4 v-if="media.title" class="movie_title">{{ media.title }}</h4>
@@ -61,6 +63,26 @@ export default {
             color: white;
             padding: 10px 0;
 
+        }
+
+        .movie_cover{
+            width: 400px;
+            height: 300px;
+
+            object-fit: cover;
+            object-position: center;
+
+
+
+        }
+
+        .movie_cover_null{
+            width: 400px;
+            height: 300px;
+
+            background-color: white;
+            text-align: center;
+            padding: 6rem 2rem;
         }
 
         .movie_info{
@@ -106,7 +128,14 @@ export default {
         .movie_cover{
             filter: brightness(0.3);
             transform: scale(1.04);
+            object-fit: contain;
         }
+
+        .movie_cover_null{
+            filter: brightness(0.3);
+            transform: scale(1.04);
+        }
+        
      }
     
 

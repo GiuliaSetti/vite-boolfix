@@ -22,8 +22,8 @@ export const store = reactive({
     // array serieTV
     tvSeriesList: [],
 
-
-    
+    // URL immagine con dimensione
+    imgSrc: 'http://image.tmdb.org/t/p/w342/',
 
     // testo input
     inputText:"",

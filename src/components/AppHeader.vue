@@ -48,13 +48,13 @@ header{
     height: 80px;
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
     z-index: 1;
 
     justify-content: space-between;
     align-items: center;
 
-    padding: 1rem;
+    padding: 2rem;
 
     #header_left{
 

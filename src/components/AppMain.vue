@@ -25,20 +25,24 @@ export default {
 
     <main>
 
-        <h2 class="categories_title">Movies</h2>
-        <div id="movie_container">
-           
-            <MediaItem v-for="movie in store.moviesList" :media="movie"></MediaItem>
+        <div class="container">
+            
+                    <h2 class="categories_title">Movies</h2>
+                    <div id="movie_container">
+                       
+                        <MediaItem v-for="movie in store.moviesList" :media="movie"></MediaItem>
+            
+                    </div>
+            
+                    <h2 class="categories_title">Tv Series</h2>
+            
+                    <div id="series_container">
+                       
+                       <MediaItem v-for="tvserie in store.tvSeriesList" :media="tvserie"></MediaItem>
+            
+                   </div>
 
         </div>
-
-        <h2 class="categories_title">Tv Series</h2>
-
-        <div id="series_container">
-           
-           <MediaItem v-for="tvserie in store.tvSeriesList" :media="tvserie"></MediaItem>
-
-       </div>
 
 
     </main>
@@ -55,41 +59,50 @@ export default {
     main{
         background-color: $secondColor;
 
-        height: 100%;
+        height: 100vh;
 
         margin-top: 80px;
 
         padding: 1rem 3rem;
 
-        .categories_title{
-                color: rgba(255, 255, 255, 0.557);
-                padding: 10px;  
-                margin-top: 2rem;
+        .container{
+
+            height: 100%;
+            overflow-y: auto;
+            padding: 2rem;
+            
+                .categories_title{
+                        color: rgba(255, 255, 255, 0.557);
+                        padding: 10px;  
+                        margin-top: 2rem;
+                }
+
+                #movie_container{
+
+                    @include dRow();
+
+                    padding: 20px;
+                    gap: 20px;
+
+                    overflow-x: auto;
+                    overflow-y: hidden;
+
+                }
+
+                #series_container{
+
+                    @include dRow();
+
+                    padding: 20px;
+                    gap: 20px;
+
+                    overflow-x: auto;
+                    overflow-y: hidden;
+
+                }
+
         }
 
-        #movie_container{
-
-            @include dRow();
-
-            padding: 20px;
-            gap: 20px;
-
-            overflow-x: auto;
-            overflow-y: hidden;
-
-        }
-
-        #series_container{
-
-            @include dRow();
-
-            padding: 20px;
-            gap: 20px;
-
-            overflow-x: auto;
-            overflow-y: hidden;
-
-        }
 
       
        
