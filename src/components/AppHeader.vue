@@ -77,22 +77,11 @@ header{
         button{
 
             margin-left: 1rem;
+            background-color: $mainColor;
 
             @include border();
-
-            background-color: $mainColor;
-            color: white;
-
-            font-weight: bold;
-            letter-spacing: 3px;
-
-            cursor: pointer;
-
-            &:hover{
-
-                background-color: red;
+            @include button();
             
-            }
         }
 
     }

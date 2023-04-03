@@ -5,6 +5,7 @@ import { store } from '../store';
 
 // importo la singola copertina
 import MediaItem from '../components/MediaItem.vue'
+import AppEmptyPage from './AppEmptyPage.vue';
 
 export default {
     name: 'AppMain',
@@ -16,6 +17,7 @@ export default {
 
     components:{
         MediaItem,
+        AppEmptyPage
     }
 }
 </script>
@@ -27,20 +29,33 @@ export default {
 
         <div class="container">
             
-                    <h2 class="categories_title">Movies</h2>
-                    <div id="movie_container">
-                       
-                        <MediaItem v-for="movie in store.moviesList" :media="movie"></MediaItem>
+                   
+                    <div v-if="store.moviesList != 0">
+                        <h2 class="categories_title">Movies</h2>
+
+                        <div id="movie_container">
+
+                            <MediaItem v-for="movie in store.moviesList" :media="movie"></MediaItem>
+                            
+                        </div>
             
                     </div>
+  
+                 
+                    <div v-if="store.tvSeriesList != 0" >
             
-                    <h2 class="categories_title">Tv Series</h2>
-            
-                    <div id="series_container">
-                       
-                       <MediaItem v-for="tvserie in store.tvSeriesList" :media="tvserie"></MediaItem>
-            
-                   </div>
+                        <h2 class="categories_title">Tv Series</h2>
+
+                        <div id="series_container" >
+
+                            <MediaItem v-for="tvserie in store.tvSeriesList" :media="tvserie"></MediaItem>
+
+                        </div>
+                    
+
+                    </div>
+
+                    <AppEmptyPage v-else></AppEmptyPage>
 
         </div>
 
@@ -69,12 +84,11 @@ export default {
 
             height: 100%;
             overflow-y: auto;
-            padding: 1rem;
+            padding: 0.4rem;
             
                 .categories_title{
                         color: rgba(255, 255, 255, 0.557);
                         padding: 10px;  
-                        margin-top: 2rem;
                 }
 
                 #movie_container{
@@ -85,8 +99,6 @@ export default {
                     gap: 20px;
 
                     overflow-x: auto;
-                    overflow-y: hidden;
-
                 }
 
                 #series_container{
@@ -97,8 +109,6 @@ export default {
                     gap: 20px;
 
                     overflow-x: auto;
-                    overflow-y: hidden;
-
                 }
 
         }

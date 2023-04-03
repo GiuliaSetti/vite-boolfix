@@ -21,3 +21,19 @@
     border: none;
 }
 
+
+@mixin button{
+
+    color: white;
+
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    &:hover{
+
+        background-color: red;
+            
+    }
+}
