@@ -15,6 +15,44 @@ export default {
         media: Object,
     },
 
+    computed:{
+
+        showFlag(){
+
+            switch(this.media.original_language){
+
+                case "en":
+                    return "gb";
+
+                case "ja":
+                    return "jp";
+
+                case "zh":
+                    return "cn";
+
+                case "ko":
+                    return "cn";
+
+                case "ko":
+                    return "kr";
+
+                default:
+
+                    return this.media.original_language
+
+                
+            }
+
+        }
+
+    },
+
+
+ 
+
+
+ 
+
 
  
 }
@@ -23,6 +61,8 @@ export default {
 
 
 <template>
+
+    
 
     <div class="movie_card">
         <img v-if="media.poster_path !== null" class="movie_cover" :src="store.imgSrc + media.poster_path" alt="image">
@@ -34,11 +74,22 @@ export default {
         <h4 v-else-if="media.name" class="media_name">{{ media.name }}</h4>
 
         <div class="movie_info">
-            <div class="movie_original_title"><b>Titolo Originale:</b>{{ media.original_title }}</div>
+
+            <!-- nome o titolo originale -->
+            <div v-if="media.original_title" class="movie_original_title"><b>Titolo Originale:</b>{{ media.original_title }}</div>
+             
+            <div v-else-if="media.original_name" class="movie_original_title"><b>Titolo Originale:</b>{{ media.original_name}}</div>
+
+
+            <!-- voto approssimato -->
             <div class="movie_vote"><b>Voto:</b>{{ media.vote_average }}</div>
+
+
+
+            <!-- bandiere -->
             <div class="movie_language">
                 <b>Lingua Originale:</b>
-                {{ media.original_language }}
+                <span class="flag" :class="'fi fi-' + showFlag"></span>
             </div>
 
         </div>
@@ -97,16 +148,11 @@ export default {
 
             .movie_language{
 
+                padding: 20px 0;
                 display: flex;
+                gap: 5px;
                 align-items: center;
-
-                .movie_flag{
-                    
-                    width: 30px;
-                    
-                }
-
-
+                
             }
 
             

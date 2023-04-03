@@ -69,7 +69,7 @@ export default {
 
             height: 100%;
             overflow-y: auto;
-            padding: 2rem;
+            padding: 1rem;
             
                 .categories_title{
                         color: rgba(255, 255, 255, 0.557);
