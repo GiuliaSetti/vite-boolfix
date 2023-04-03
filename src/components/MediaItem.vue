@@ -4,7 +4,7 @@
 import { store } from '../store';
 
 export default {
-    name: 'MovieItem',
+    name: 'MediaItem',
     data() {
         return {
             store
@@ -14,6 +14,8 @@ export default {
     props: {
         media: Object,
     },
+
+
 
     computed:{
 
@@ -48,7 +50,16 @@ export default {
     },
 
 
- 
+    methods:{
+
+        getVote(vote){
+
+            vote = Math.round(vote / 2);
+            return vote
+        }
+
+
+    }
 
 
  
@@ -64,30 +75,34 @@ export default {
 
     
 
-    <div class="movie_card">
-        <img v-if="media.poster_path !== null" class="movie_cover" :src="store.imgSrc + media.poster_path" alt="image">
+    <div class="media_card">
+        <img v-if="media.poster_path !== null" class="media_cover" :src="store.imgSrc + media.poster_path" alt="image">
 
-        <div class="movie_cover_null" v-else>Copertina non disponibile</div>
+        <div class="media_cover_null" v-else>Copertina non disponibile</div>
 
         <!-- pongo le condizioni affinchè si veda il nome o il titolo dato che le serie si identificano con nome -->
-        <h4 v-if="media.title" class="movie_title">{{ media.title }}</h4>
+        <h4 v-if="media.title" class="media_title">{{ media.title }}</h4>
         <h4 v-else-if="media.name" class="media_name">{{ media.name }}</h4>
 
-        <div class="movie_info">
+        <div class="media_info">
 
             <!-- nome o titolo originale -->
-            <div v-if="media.original_title" class="movie_original_title"><b>Titolo Originale:</b>{{ media.original_title }}</div>
+            <div v-if="media.original_title" class="media_original_title"><b>Titolo Originale:</b>{{ media.original_title }}</div>
              
-            <div v-else-if="media.original_name" class="movie_original_title"><b>Titolo Originale:</b>{{ media.original_name}}</div>
+            <div v-else-if="media.original_name" class="media_original_title"><b>Titolo Originale:</b>{{ media.original_name}}</div>
 
 
             <!-- voto approssimato -->
-            <div class="movie_vote"><b>Voto:</b>{{ media.vote_average }}</div>
-
+            <div class="media_vote">
+                <div><b>Voto: {{ getVote(media.vote_average) }}</b></div>
+                
+                <span v-for="star in 5" :class="star <= getVote(media.vote_average) ? 'fa-solid' : 'fa-regular'" class="fa-star"></span>
+            </div>
+            
 
 
             <!-- bandiere -->
-            <div class="movie_language">
+            <div class="media_language">
                 <b>Lingua Originale:</b>
                 <span class="flag" :class="'fi fi-' + showFlag"></span>
             </div>
@@ -106,9 +121,11 @@ export default {
 @use "../scss/mixin" as *;
 @use "../scss/variables" as *;
 
-    .movie_card{
+    .media_card{
 
         position: relative;
+
+        
 
         h4{
             color: white;
@@ -116,7 +133,7 @@ export default {
 
         }
 
-        .movie_cover{
+        .media_cover{
             width: 400px;
             height: 300px;
 
@@ -127,7 +144,7 @@ export default {
 
         }
 
-        .movie_cover_null{
+        .media_cover_null{
             width: 400px;
             height: 300px;
 
@@ -136,7 +153,7 @@ export default {
             padding: 6rem 2rem;
         }
 
-        .movie_info{
+        .media_info{
             position: absolute;
             top: 0;
 
@@ -145,8 +162,7 @@ export default {
             font-size: 12px;
 
             display: none;
-
-            .movie_language{
+            .media_language{
 
                 padding: 20px 0;
                 display: flex;
@@ -154,6 +170,8 @@ export default {
                 align-items: center;
                 
             }
+
+
 
             
 
@@ -164,20 +182,20 @@ export default {
 
     }
 
-    .movie_card:hover {
-        .movie_info{
+    .media_card:hover {
+        .media_info{
             display: block;
 
              color: white;
         }
 
-        .movie_cover{
+        .media_cover{
             filter: brightness(0.3);
             transform: scale(1.04);
             object-fit: contain;
         }
 
-        .movie_cover_null{
+        .media_cover_null{
             filter: brightness(0.3);
             transform: scale(1.04);
         }

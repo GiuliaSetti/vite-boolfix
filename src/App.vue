@@ -28,6 +28,27 @@
     AppMain,
   },
 
+  created() {
+        
+            let popularMovieAPI = this.store.APIs.APIbase + this.store.APIs.popularMovie + this.store.APIs.APIkey;
+
+            axios.get(popularMovieAPI).then((res) => {
+
+                this.store.moviesList = res.data.results;
+                console.log(res.data.results);
+
+            });
+
+            let popularSeriesAPI = this.store.APIs.APIbase + this.store.APIs.popularSeries + this.store.APIs.APIkey;
+            
+            axios.get(popularSeriesAPI).then((res) => {
+
+                this.store.tvSeriesList = res.data.results;
+                console.log(res.data.results);
+
+            });
+    },
+
 
   methods:{
 

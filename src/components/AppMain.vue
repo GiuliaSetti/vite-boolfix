@@ -59,7 +59,7 @@ export default {
     main{
         background-color: $secondColor;
 
-        height: 100vh;
+        height: calc(100% - 80px);
 
         margin-top: 80px;
 
