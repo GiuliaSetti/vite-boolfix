@@ -15,9 +15,9 @@ export const store = reactive({
         // series
         tvSeriesAPI: '/search/tv',
 
-        // test per film e serie popolari
+        // test per film e 
         popularMovie:'/movie/popular',
-
+        // serie popolari
         popularSeries: '/tv/popular'
     },
 
@@ -32,7 +32,7 @@ export const store = reactive({
 
     // testo input
     inputText:"",
-
-    stars: 5,
+    
+    index: 0,
 
 });

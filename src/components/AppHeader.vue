@@ -28,11 +28,11 @@ export default {
         <div id="header_right">
             <div class="header_input">
                 
-                <input type="search" @keyup.enter="$emit('search')" placeholder="search in the catalog" v-model="store.inputText">
+                <input type="search" @keyup.enter="$emit('search')" placeholder="Cerca nel catalogo.." v-model="store.inputText">
             </div>
 
             <div class="header_button">
-                <button @click="$emit('search')">SEARCH</button>
+                <button @click="$emit('search')">CERCA</button>
             </div>
 
 
@@ -62,7 +62,7 @@ header{
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
 
     justify-content: space-between;
     align-items: center;

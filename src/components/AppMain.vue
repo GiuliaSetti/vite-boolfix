@@ -6,6 +6,7 @@ import { store } from '../store';
 // importo la singola copertina
 import MediaItem from '../components/MediaItem.vue'
 import AppEmptyPage from './AppEmptyPage.vue';
+import AppMediaInfo from './AppMediaInfo.vue';
 
 export default {
     name: 'AppMain',
@@ -17,8 +18,11 @@ export default {
 
     components:{
         MediaItem,
-        AppEmptyPage
-    }
+        AppEmptyPage,
+        AppMediaInfo,
+    },
+
+    
 }
 </script>
 
@@ -28,6 +32,8 @@ export default {
     <main>
 
         <div class="container">
+
+                    <AppMediaInfo id="item_description"></AppMediaInfo>
             
                    
                     <div v-if="store.moviesList != 0">
@@ -79,6 +85,7 @@ export default {
         margin-top: 80px;
 
         padding: 1rem 3rem;
+        position: relative;
 
         .container{
 
@@ -111,7 +118,22 @@ export default {
                     overflow-x: auto;
                 }
 
+                #item_description{
+
+                    position: absolute;
+
+                    top: 10px;
+                    left: 20px;
+                    z-index: 1;
+
+                }
+
+
+
+
         }
+
+       
 
 
       
