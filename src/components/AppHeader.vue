@@ -6,7 +6,8 @@ export default {
     name: 'AppHeader',
     data() {
         return {
-            store
+            store,
+            src: '../public/img/profile.png',
         }
     }
 }
@@ -25,8 +26,20 @@ export default {
         </div>
 
         <div id="header_right">
-            <input type="search" @keyup.enter="$emit('search')" placeholder="search in the catalog" v-model="store.inputText">
-            <button @click="$emit('search')">SEARCH</button>
+            <div class="header_input">
+                
+                <input type="search" @keyup.enter="$emit('search')" placeholder="search in the catalog" v-model="store.inputText">
+            </div>
+
+            <div class="header_button">
+                <button @click="$emit('search')">SEARCH</button>
+            </div>
+
+
+
+            <div class="profile_image">
+                <img :src="src" alt="image">
+            </div>
         </div>
 
     </header>
@@ -67,6 +80,11 @@ header{
     }
 
     #header_right{
+        
+        @include dRow();
+        justify-content:  flex-end;
+        align-items: center;
+        gap: 10px;
 
         input{
             @include border();
@@ -75,13 +93,31 @@ header{
         }
 
         button{
-
-            margin-left: 1rem;
             background-color: $mainColor;
 
             @include border();
             @include button();
             
+        }
+
+        .profile_image{
+            width: 10%;
+            cursor: pointer;
+            margin-left: 20px;
+
+            
+                img{
+
+                    width: 100%;
+                    display: block;
+
+                }
+
+                &:hover{
+                    border: 3px solid white;
+
+                }
+
         }
 
     }

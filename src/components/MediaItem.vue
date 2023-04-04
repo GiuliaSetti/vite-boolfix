@@ -134,19 +134,15 @@ export default {
         }
 
         .media_cover{
-            width: 400px;
-            height: 300px;
-
-            object-fit: cover;
-            object-position: center;
-
-
-
+            width: 250px;
+            height: 400px;
         }
 
+     
+
         .media_cover_null{
-            width: 400px;
-            height: 300px;
+            width: 250px;
+            height: 400px;
 
             background-color: white;
             text-align: center;
@@ -192,7 +188,6 @@ export default {
         .media_cover{
             filter: brightness(0.3);
             transform: scale(1.04);
-            object-fit: contain;
         }
 
         .media_cover_null{
