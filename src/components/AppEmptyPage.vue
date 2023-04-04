@@ -18,7 +18,7 @@ export default {
 
     <div class="no_results">
 
-        <h3>Sorry, no results found!</h3> 
+        <h3>Mi dispiace, nessun risultato!</h3> 
 
     </div>
 

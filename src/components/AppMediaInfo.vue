@@ -21,11 +21,12 @@ export default {
 
     <div class="item_container">
 
-        <i class="fa-solid fa-square-xmark"></i>
+        <i @click="$emit('close')" class="fa-solid fa-square-xmark"></i>
 
 
         <div class="item_image">
-            <img :src="store.imgSrc + store.moviesList[store.index].backdrop_path" alt="cover">
+            <img v-if="store.moviesList[store.index].backdrop_path !== null" :src="store.imgSrc + store.imgBack + store.moviesList[store.index].backdrop_path" alt="cover">
+            <div class="item_null" v-else>Copertina Non Disponibile</div>
             <i class="fa-regular fa-circle-play"></i>
         </div>
 
@@ -105,6 +106,13 @@ export default {
 
         .item_image{
             position: relative;
+
+            .item_null{
+                width: 100%;
+                height: 200px;
+                background-color: white;
+                padding: 5rem 1rem;
+            }
             
 
             i{
@@ -114,8 +122,6 @@ export default {
                 left: 40%;
 
                 font-size: 50px;
-
-                color: white;
 
                 display: none;
                 cursor: pointer;

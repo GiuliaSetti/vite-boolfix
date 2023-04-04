@@ -5,7 +5,9 @@ import { store } from '../store';
 
 // importo la singola copertina
 import MediaItem from '../components/MediaItem.vue'
+// imposto la pagina che mostra 0 risultati
 import AppEmptyPage from './AppEmptyPage.vue';
+// importo la sezione info
 import AppMediaInfo from './AppMediaInfo.vue';
 
 export default {
@@ -23,6 +25,21 @@ export default {
     },
 
     
+    methods: {
+
+        hide() {
+            this.store.isVisible = false;
+        },
+
+        
+        showDesc() {
+
+            store.isVisible = true;
+
+        },
+    }
+
+    
 }
 </script>
 
@@ -33,7 +50,7 @@ export default {
 
         <div class="container">
 
-                    <AppMediaInfo id="item_description"></AppMediaInfo>
+                    <AppMediaInfo id="item_description" :class="store.isVisible == true ? 'active' : '' " @close="hide()"></AppMediaInfo>
             
                    
                     <div v-if="store.moviesList != 0">
@@ -41,7 +58,7 @@ export default {
 
                         <div id="movie_container">
 
-                            <MediaItem v-for="movie in store.moviesList" :media="movie"></MediaItem>
+                            <MediaItem  @click="showDesc()" v-for="movie in store.moviesList" :media="movie"></MediaItem>
                             
                         </div>
             
@@ -126,6 +143,13 @@ export default {
                     left: 20px;
                     z-index: 1;
 
+                    display: none;
+
+                }
+
+                #item_description.active{
+
+                    display: block;
                 }
 
 

@@ -28,11 +28,21 @@ export const store = reactive({
     tvSeriesList: [],
 
     // URL immagine con dimensione
-    imgSrc: 'http://image.tmdb.org/t/p/w342/',
+    imgSrc: 'http://image.tmdb.org/t/p/',
+
+    imgWidth: 'w342/',
+
+    imgBack: 'w300/',
 
     // testo input
     inputText:"",
     
     index: 0,
+
+
+
+    
+    isVisible: false,
+
 
 });

@@ -76,7 +76,7 @@ export default {
     
 
     <div class="media_card">
-        <img v-if="media.poster_path !== null" class="media_cover" :src="store.imgSrc + media.poster_path" alt="image">
+        <img v-if="media.poster_path !== null" class="media_cover" :src="store.imgSrc + store.imgWidth + media.poster_path" alt="image">
 
         <div class="media_cover_null" v-else>Copertina non disponibile</div>
 
